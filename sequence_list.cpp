@@ -15,6 +15,7 @@ typedef struct {
 }SqList;
 
 
+
 //初始化顺序表
 int init_sql(SqList* sql) {
 	//为顺序表中数据元素申请动态储存空间
@@ -29,21 +30,27 @@ int init_sql(SqList* sql) {
 }
 
 
+
 //销毁顺序表
 void destroy_sql(SqList * sql) {
+	if (sql->elem == NULL)
+		return;
 	free((*sql).elem);
 	printf("sequence list destroyed\n");
 }
 
 
+
 //重置顺序表
 void clear_sql(SqList* sql) {
-	free((*sql).elem);
+	if (sql->elem != NULL)
+		free((*sql).elem);
 	init_sql(sql);
 	sql->length = 0;	
 	sql->list_size = LIST_INIT_SIZE;
 	printf("sequence list cleared\n");
 }
+
 
 
 //顺序表是否为空
@@ -53,11 +60,13 @@ int is_empty_sql(SqList sql) {
 }
 
 
+
 //顺序表长度
 //返回值：顺序表长度
 int lenof_sql(SqList sql) {
 	return sql.length;
 }
+
 
 
 //取得顺序表第i个元素的值并赋值给 result
@@ -71,6 +80,7 @@ int get_elem_sql(SqList sql, int i,int* result) {
 }
 
 
+
 //是否存在和e的关系满足 compare() 函数的元素
 //返回值：若元素存在则返回 1 否则返回 0
 int locate_elem_sql(SqList sql, int e, int(compare)(int, int)) {
@@ -82,6 +92,7 @@ int locate_elem_sql(SqList sql, int e, int(compare)(int, int)) {
 	}
 	return 0;
 }
+
 
 
 //寻找 cur_e 的前驱元素并赋值给 prior
@@ -104,6 +115,7 @@ int prior_elem_sql(SqList sql, int cur_e,int* prior) {
 }
 
 
+
 //寻找 cur_e 的后继元素并赋值给 next
 //返回值：操作成功返回 1 ，失败返回 0
 int next_elem_sql(SqList sql, int cur_e, int* next) {
@@ -119,6 +131,7 @@ int next_elem_sql(SqList sql, int cur_e, int* next) {
 	}
 	return 0;
 }
+
 
 
 //在第i位插入 e
@@ -151,6 +164,7 @@ int insert_sql(SqList* sql, int i, int e) {
 }
 
 
+
 //删除第 i 个元素并把值赋给 elem_i
 //返回值：操作成功返回 1 ，失败返回 0
 int delete_sql(SqList* sql, int i, int* elem_i) {
@@ -169,6 +183,7 @@ int delete_sql(SqList* sql, int i, int* elem_i) {
 }
 
 
+
 //历遍所有元素
 void traverse_sql(SqList sql, void(Visit)(int)) {
 	int i;
@@ -178,6 +193,7 @@ void traverse_sql(SqList sql, void(Visit)(int)) {
 	}
 	printf("traversed\n");
 }
+
 
 
 //为空顺序表赋值，正序
@@ -203,6 +219,8 @@ int create_sql(SqList* sql)
 	putchar('\n');
 	return 1;
 }
+
+
 
 /*
 提供两个升序链表，合并成新的降序列表并返回
@@ -243,6 +261,8 @@ SqList merge_sql(SqList l1, SqList l2) {
 	}
 	return new_sql;
 }
+
+
 
 //测试代码：输入一组数据存入表1，自动生成表2，排序
 /*
