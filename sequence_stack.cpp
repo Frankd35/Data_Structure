@@ -39,6 +39,7 @@ int init_sqstack(sqstack* stack) {
 //Ïú»ÙÕ»
 void destroy_sqstack(sqstack* stack) {
 	free(stack->base);
+	stack->size = STACK_INIT_SIZE;
 }
 
 
