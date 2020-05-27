@@ -231,10 +231,15 @@ void createHuffmanCode(HFTree tree) {	// 参数是一颗Huffman树
 		createHuffmanCode(tree->right_child);
 }
 
-//int main(void) {
-//	HFTree* forest = getCharWeighted();
-//	HFTree huffman_tree = buildHuffmanTree(forest);
-//	inOrderTraversal(huffman_tree);
-//	createHuffmanCode(huffman_tree);
-//	inOrderTraversal(huffman_tree);
-//}
+
+
+//测试代码
+/*
+int main(void) {
+	HFTree* forest = getCharWeighted();
+	HFTree huffman_tree = buildHuffmanTree(forest);
+	inOrderTraversal(huffman_tree);
+	createHuffmanCode(huffman_tree);
+	inOrderTraversal(huffman_tree);
+}
+*/

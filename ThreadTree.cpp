@@ -140,6 +140,8 @@ void inOrderTraversal(ThreadTree tree) {
 
 
 
+//测试代码
+/*
 int main(void) {
 	//创建一颗二叉树
 	ThreadTree tree = createBiTree();
@@ -150,3 +152,4 @@ int main(void) {
 	inOrderTraversal_thread(head);
 	return 0;
 }
+*/
